@@ -1,0 +1,18 @@
+<h1>Request</h1>
+
+All Request
+
+<div class="filters">
+  <ul>
+    <li (click)="filterByStatus('pending')">pending</li>
+    <li (click)="filterByStatus('approved')">approved</li>
+    <li (click)="filterByStatus('denied')">denied</li>
+    <li (click)="filterByStatus('all')">all</li>
+  </ul>
+</div>
+
+<div class="request-list">
+  <ul>
+    <li *ngFor="let request of requests$ | async"> {{request.date}} {{request.reason}} {{request.status}}</li>
+  </ul>
+</div>

@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RequestRoutingModule } from './request-routing.module';
+import { RequestComponent } from './containers/request/request.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [RequestComponent],
   imports: [
     CommonModule,
     RequestRoutingModule
