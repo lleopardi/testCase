@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ManageResponse } from '../models/manage-response.model';
 import { environment } from '../../../environments/environment';
-import { tap, map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -18,15 +18,13 @@ export class ManagementService {
 
   constructor(private http: HttpClient) { }
 
-  all(): Observable<ManageResponse[]> {
+  all(): void {
     const api = `${environment.api}manage`;
 
-    return this.http.get<ManageResponse[]>(api).pipe(
-      tap((response) => {
-        this.fields = response;
-        return this.allFields.next(this.fields);
-      })
-    );
+    this.http.get<ManageResponse[]>(api).subscribe((response) => {
+      this.fields = response;
+      return this.allFields.next(this.fields);
+    });
   }
 
   update(field: ManageResponse): Observable<ManageResponse> {
