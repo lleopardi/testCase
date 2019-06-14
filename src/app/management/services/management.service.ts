@@ -37,9 +37,14 @@ export class ManagementService {
   }
 
   updateArray(response: ManageResponse) {
-    const filtrado = this.fields.filter( (item) => item.id !== response.id);
-    const nuevo = [...filtrado, response];
-    this.allFields.next(nuevo);
+    const fields = this.fields.map( (item) => {
+      if (item.id === response.id) {
+        return response;
+      }
+      return item;
+    }
+    );
+    this.allFields.next(fields);
   }
 
 }
