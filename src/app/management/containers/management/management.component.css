@@ -1,0 +1,8 @@
+.sidebar {
+  background: black;
+  color: white;
+}
+
+.active {
+  background: #28a745;
+}
