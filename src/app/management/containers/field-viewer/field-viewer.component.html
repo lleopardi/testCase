@@ -1,0 +1,61 @@
+<div class="container-viewer border p-4">
+
+  <form [formGroup]="fieldForm">
+
+    <div class="mb-2 d-flex justify-content-between align-items-start">
+      <div class="form-group">
+        <label [class.font-weight-bold]="!isEditing">{{fields.key_name}}</label>
+        <input type="text" class="form-control" placeholder="field name" formControlName="key_name" *ngIf="isEditing">
+      </div>
+
+      <div class="edit">
+        <button type="button" class="btn btn-success" (click)="edit()" *ngIf="!isEditing">Edit this</button>
+        <button type="button" class="btn btn-success" (click)="save()" *ngIf="isEditing">Save</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <div *ngIf="!isEditing">{{fields.description}}</div>
+      <input class="form-control" type="text" formControlName="description" placeholder="Description" *ngIf="isEditing">
+    </div>
+
+    <div class="form-group">
+      <label for="power">type</label>
+      <div *ngIf="!isEditing">{{fields.type}}</div>
+      <select class="form-control col-sm-5" id="power" formControlName="type" *ngIf="isEditing">
+        <option *ngFor="let typeOfField of typeOfFields" [value]="typeOfField">{{typeOfField}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <ng-container *ngIf="!isEditing">
+        <label>Sensitivity</label>
+        {{message}}
+      </ng-container>
+
+      <div class="form-check" *ngIf="isEditing">
+        <input class="form-check-input" type="checkbox" formControlName="sensitivity">
+        <label class="form-check-label"> Is this personal data? </label>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="mb-4">
+    <div class="title">
+      Possible values
+    </div>
+
+    <div class="row">
+      <div class="col-6">Value</div>
+      <div class="col-6">Description</div>
+    </div>
+    <div class="row mt-3" *ngFor="let value of values">
+      <div class="col-6">{{value.value}}</div>
+      <div class="col-6">{{value.description}}</div>
+    </div>
+
+  </div>
+
+</div>
