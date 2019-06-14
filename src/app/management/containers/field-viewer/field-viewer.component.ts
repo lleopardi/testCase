@@ -65,7 +65,6 @@ export class FieldViewerComponent implements OnInit, OnChanges {
     const fields = this.field;
     const payload: ManageResponse = { ...fields, ...{fields: formValue}};
     this.managementService.update(payload).subscribe((response) => {
-      console.log('response', response);
       this.field = response;
     });
   }
