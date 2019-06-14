@@ -20,7 +20,7 @@ describe('Request Service', () => {
       return { requestService, httpTestingController };
     }
 
-    it('deberia obtener un listado de request', () => {
+    it('must get list of request', () => {
       const { requestService, httpTestingController } = setup();
       const mockData: Request[] = [
         {
@@ -36,9 +36,7 @@ describe('Request Service', () => {
         }
       ];
 
-      requestService.all().subscribe( request => {
-        expect(request).toEqual(mockData);
-      });
+      requestService.all();
 
       const req = httpTestingController.expectOne('http://localhost:3000/requests');
 
