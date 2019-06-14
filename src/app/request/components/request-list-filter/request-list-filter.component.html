@@ -1,0 +1,9 @@
+<div class="d-flex border-bottom">
+  <div class="m-1 p-2 filter text-center font-weight-bold" (click)="onSelected(filter)" *ngFor="let filter of filters"
+    [ngClass]="{active: filterSelected === filter}">{{filter | uppercase}}
+  </div>
+</div>
+
+<div class="filter-selected">
+  {{filterSelected | titlecase}} request
+</div>

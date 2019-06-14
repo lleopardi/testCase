@@ -11,8 +11,6 @@ import { Observable } from 'rxjs';
 export class RequestComponent implements OnInit {
 
   requests$: Observable<Request[]>;
-  filters = ['all', 'pending', 'approved', 'denied'];
-  filterSelected = 'all';
 
   constructor(private requestService: RequestService) { }
 
@@ -23,6 +21,5 @@ export class RequestComponent implements OnInit {
 
   filterByStatus(status: string = 'all') {
     this.requestService.filterByStatus(status);
-    this.filterSelected = status;
   }
 }

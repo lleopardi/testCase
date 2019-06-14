@@ -1,0 +1,14 @@
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let header of headerTable" >{{header | uppercase}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <th scope="row">{{request.date}}</th>
+        <td>{{request.reason}}</td>
+        <td><div [ngClass]="getStyle(request.status)" class="p-2 status">{{request.status}}</div></td>
+      </tr>
+    </tbody>
+  </table>

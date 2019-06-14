@@ -1,15 +1,5 @@
 <h1 class="title">Request</h1>
 
-<div class="d-flex border-bottom">
-  <div class="m-1 p-2 filter text-center" (click)="filterByStatus(filter)" *ngFor="let filter of filters"
-    [ngClass]="{active: filterSelected === filter}">{{filter}}
-  </div>
-</div>
+<app-request-list-filter (selected)="filterByStatus($event)"></app-request-list-filter>
 
-<div class="filter-selected">
-  {{filterSelected}} request
-</div>
-
-<div class="request-list">
-  <app-request-list [requests]="requests$ | async"></app-request-list>
-</div>
+<app-request-list [requests]="requests$ | async"></app-request-list>
