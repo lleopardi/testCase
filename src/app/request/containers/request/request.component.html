@@ -1,18 +1,15 @@
-<h1>Request</h1>
+<h1 class="title">Request</h1>
 
-All Request
+<div class="d-flex border-bottom">
+  <div class="m-1 p-2 filter text-center" (click)="filterByStatus(filter)" *ngFor="let filter of filters"
+    [ngClass]="{active: filterSelected === filter}">{{filter}}
+  </div>
+</div>
 
-<div class="filters">
-  <ul>
-    <li (click)="filterByStatus('pending')">pending</li>
-    <li (click)="filterByStatus('approved')">approved</li>
-    <li (click)="filterByStatus('denied')">denied</li>
-    <li (click)="filterByStatus('all')">all</li>
-  </ul>
+<div class="filter-selected">
+  {{filterSelected}} request
 </div>
 
 <div class="request-list">
-  <ul>
-    <li *ngFor="let request of requests$ | async"> {{request.date}} {{request.reason}} {{request.status}}</li>
-  </ul>
+  <app-request-list [requests]="requests$ | async"></app-request-list>
 </div>

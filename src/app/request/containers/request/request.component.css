@@ -1,0 +1,15 @@
+.active {
+  border-bottom: 3px solid black;
+  transform: translateY(6px);
+}
+
+.filter {
+  width: 80px;
+}
+
+.filter-selected {
+  background: #28a745;
+  padding: 12px;
+  margin: 10px 4px;
+  color: white;
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../../services/request.service';
 import { Request } from '../../models/request.models';
-import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-request',
@@ -9,24 +9,20 @@ import { Subject } from 'rxjs';
   styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit {
-  requests: Request[];
-  requests$ = new Subject<Request[]>();
+
+  requests$: Observable<Request[]>;
+  filters = ['all', 'pending', 'approved', 'denied'];
+  filterSelected = 'all';
 
   constructor(private requestService: RequestService) { }
 
   ngOnInit() {
-    this.requestService.all().subscribe(requests => {
-      this.requests = requests;
-      this.requests$.next(requests);
-    });
+    this.requests$ = this.requestService.request$;
+    this.requestService.all();
   }
 
-  // TODO: refactor
   filterByStatus(status: string = 'all') {
-    if (status === 'all') {
-      return this.requests$.next(this.requests);
-    }
-    const filtered =  this.requests.filter((item) => item.status === status);
-    this.requests$.next(filtered);
+    this.requestService.filterByStatus(status);
+    this.filterSelected = status;
   }
 }
