@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "node_modules/.bin/json-server --watch db.json"
+    "server": "json-server --watch db.json",
+    "allServices": "npm start & npm run server"
   },
   "private": true,
   "dependencies": {

@@ -8,7 +8,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Important!
 
+Run `npm run allServices` for start mock server and server for app
+
 Run `npm run server` for start mock server
+
+
 
 ## Code scaffolding
 
